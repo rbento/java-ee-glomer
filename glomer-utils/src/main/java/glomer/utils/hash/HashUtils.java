@@ -3,6 +3,7 @@ package glomer.utils.hash;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -105,7 +106,7 @@ public final class HashUtils {
 
             byte[] afterHash = md.digest();
 
-            return encodeToBase64 ? new Base64Encoder().encode(afterHash).getBytes() : afterHash;
+            return encodeToBase64 ? Base64.getEncoder().encode(afterHash) : afterHash;
 
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
 
